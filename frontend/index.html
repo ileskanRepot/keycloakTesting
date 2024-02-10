@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://auth.ileska.fi/js/keycloak.js"></script>
+    <script src="/js/function.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Keycloak SSO with JS Application</title>
+  </head>
+  <body onload="initKeycloak()">
+    <div id="header">
+      <h1 id="headerLabel" aligns="center">Demo Keycloak SSO in Javascript</h1>
+    </div>
+
+    <div id="content" style="width: 60%; margin: 0 auto">
+      <p style="color: darkgray; margin: 90px 50px 25px 50px">
+        This is my keycloak app
+      </p>
+    </div>
+    <div id="table-attr">
+      <table aligns="center">
+        <caption>
+          Information of User
+        </caption>
+        <tr>
+          <th>Attributes</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td id="row-username">${user.username}</td>
+        </tr>
+        <tr>
+          <td>First Name</td>
+          <td id="row-firstName">${user.username}</td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td id="row-lastName">${user.username}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td id="row-name">${user.fullName}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td id="row-email">${user.email}</td>
+        </tr>
+      </table>
+    </div>
+    <div d="content" style="width: 20%; margin: 100px auto">
+      <div>
+        <textarea id="ta-token">EMPTY</textarea>
+        <textarea id="ta-refreshToken">EMPTY</textarea>
+      </div>
+
+      <input type="button" value="Update Token" onclick="refreshToken()" />
+
+      <input type="button" value="LOGOUT" onclick="logout()" />
+    </div>
+  </body>
+</html>

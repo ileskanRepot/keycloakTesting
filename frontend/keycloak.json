@@ -1,0 +1,8 @@
+{
+  "realm": "PythonTest",
+  "auth-server-url": "https://auth.ileska.fi/",
+  "ssl-required": "external",
+  "resource": "testClient",
+  "public-client": true,
+  "confidential-port": 0
+}
