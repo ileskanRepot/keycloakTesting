@@ -1,8 +1,9 @@
+from typing import Annotated
 # from keycloak.realm import KeycloakRealm
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi import FastAPI, Depends
 
-from backend.auth import get_user_info
+from backend.auth import get_user_info, oauth2_scheme, oauth2_scheme_psw
 from backend.models import User
 
 app = FastAPI()
@@ -37,4 +38,6 @@ async def logout():
 async def secure(user: User = Depends(get_user_info)):
 	return {"message": f"Hello {user.username} you have the following service: {user.realm_roles}"}
 
-# print(keycloakOpenid.well_known())
+@app.get("/items/")
+async def read_items(token: Annotated[str, Depends(oauth2_scheme_psw)]):
+    return {"token": token}
